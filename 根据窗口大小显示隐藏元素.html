@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		div{
+			width: 200px;
+			height: 600px;
+			background: pink;
+		}
+	</style>
+	<body>
+		<script>
+			window.addEventListener('load',function(){
+				var div=document.querySelector('div');
+				window.addEventListener('resize',function(){
+					console.log(window.innerWidth);
+					if(window.innerWidth<200){
+						div.style.display='none';
+					}else{
+						div.style.display='block';
+					}
+				})
+			})
+		</script>
+		<div></div>
+	</body>
+</html>

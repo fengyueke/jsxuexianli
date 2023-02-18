@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		span{
+			width: 40px;
+			height: 40px;
+			display: inline-block;
+			background: #000;
+			color: #fff;
+			text-align: center;
+			line-height: 40px;
+		}
+	</style>
+	<body>
+		<span class="h">1</span>
+		<span class="m">2</span>
+		<span class="s">3</span>
+		<script>
+			var h=document.querySelector('.h');
+			var m=document.querySelector('.m');
+			var s=document.querySelector('.s');
+			// 获取未来时间
+			var comingdate=+new Date('2022-6-11 12:00:00');
+			function dateDown () {
+				// 获取当前时间
+				var nowdate=+new Date();
+				// 差值
+				var cha=(comingdate-nowdate)/1000;
+				//获取小时
+				var h1=parseInt(cha/60/60%24);
+				var h2= h1>10? h1:'0'+h1;
+				h.innerHTML=h2;
+				// 获取分钟
+				var m1=parseInt(cha/60%60);
+				var m2= m1>10? m1:'0'+m1;
+				m.innerHTML=m2;
+				// 获取秒
+				var s1=parseInt(cha%60);
+				var s2= s1>10? s1:'0'+s1;
+				s.innerHTML=s2;
+			}
+			// 调用一次防止有空白
+			dateDown();
+			setInterval(dateDown,1000);
+		</script>
+	</body>
+</html>

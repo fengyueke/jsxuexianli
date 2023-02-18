@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		span{
+			position: absolute;
+			width: 80px;
+			height: 40px;
+			border: 1px solid;
+			text-align: center;
+			line-height: 40px;
+			border-radius: 20%;
+			left: 420px;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div class="box">
+		<span>跳过</span>
+		<img src="img/zhong.webp">
+		</div>
+		
+	</body>
+	<script>
+		var div=document.querySelector('div');
+		var span=document.querySelector('span');
+		span.addEventListener('click',function(){
+			div.style.display='none';
+		})
+		function guanbi () {
+			div.style.display='none';
+		}
+		setTimeout(guanbi,5000);
+		
+	</script>
+</html>

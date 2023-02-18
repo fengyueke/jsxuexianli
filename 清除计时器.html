@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<button>开启计时器</button>
+		<button>停止计时器</button>
+		<script>
+			var btns=document.querySelectorAll('button');
+			var timer=null;
+			btns[0].addEventListener('click',function(){
+				timer=setInterval(function(){
+					console.log('ni hao ma');
+				},1000)
+			})
+			btns[1].addEventListener('click',function(){
+				clearInterval(timer);
+			});
+		</script>
+	</body>
+</html>

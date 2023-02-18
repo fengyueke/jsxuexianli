@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.focus{
+			/* overflow: hidden; */
+			position: absolute;
+			left: 200px;
+			top: 100px;
+			width: 721px;
+			height: 455px;
+		}
+		.focus ul{
+			position: absolute;
+			left: 0;
+			width: 4000px;
+		}
+		.focus ul li{
+			list-style: none;
+			float: left;
+		}
+		
+		a{
+			text-decoration: none;
+		}
+		.top{
+			display: none;
+			position: absolute;
+			left:0px;
+			top: 220px;
+			z-index: 1;
+		}
+		.top span{
+			font-size: 20px;
+			display: block;
+			width: 30px;
+			height: 50px;
+			text-align: center;
+			line-height: 50px;
+			background: rgba(0, 0, 0, 25%);
+		}
+		.top span a{
+			color: lightgray;
+		}
+		.top span a:hover{
+			color: red;
+		}
+		.top span:nth-of-type(2){
+			position: absolute;
+			top: 0;
+			left: 691px;
+		}
+		ol{
+			position: absolute;
+			bottom: 20px;
+		}
+		ol li{
+			cursor: pointer;
+			float: left;
+			list-style: none;
+			width: 20px;
+			height: 20px;
+			border: 1px solid #fff;
+			border-radius: 50%;
+			margin-left: 20px;
+		}
+		.current{
+			background: #fff;
+		}
+	</style>
+	<body>
+		<div class="focus">
+			<div class="top">
+				<span><a href="javascript:;">←</a></span>
+				<span><a href="javascript:;">→</a></span>
+			</div>
+			<ul>
+				<li><a href="javascript:;"><img src="img/focus1.png"></a></li>
+				<li><a href="javascript:;"><img src="img/focus1.png"></a></li>
+				<li><a href="javascript:;"><img src="img/focus1.png"></a></li>
+				<li><a href="javascript:;"><img src="img/focus1.png"></a></li>
+			</ul>
+			<ol>
+				
+			</ol>
+		</div>
+	</body>
+	<script src="js/animate.js"></script>
+	<script src="js/lunbotu.js"></script>
+</html>

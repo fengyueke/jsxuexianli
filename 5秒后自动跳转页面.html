@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		span{
+			display: block;
+			width: 300px;
+			height: 40px;
+			border: 1px solid;
+			text-align: center;
+			line-height: 40px;
+		}
+	</style>
+	<body>
+		<span></span>
+		<script>
+			var span=document.querySelector('span');
+			var time=5;
+			function go () {
+				span.innerHTML=''+time+'秒后自动跳转 ';
+				if(time==0){
+					location.href='https://www.bilibili.com';
+				}
+				time--;
+			}
+			go();
+			setInterval(go,1000);
+		</script>
+	</body>
+</html>

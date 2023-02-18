@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div.nav{
+				position: absolute;
+				left: 100px;
+				top: 100px;
+				width: 200px;
+				height: 150px;
+				border: 1px solid;
+				text-align: center;
+			}
+			.nav .little{
+				margin-top: 15px;
+				width: 180px;
+			}
+			.zhe{
+				display: none;
+				position: absolute;
+				top: 0;
+				cursor: move;
+				opacity: 50%;
+				width: 100px;
+				height: 100px;
+				background: lightgoldenrodyellow;
+			}
+			.amplify{
+				overflow: hidden;
+				display: none;
+				position: absolute;
+				top: 0;
+				width:400px;
+				left: 220px;
+				height: 300px;
+				border: 1px solid;
+				text-align: center;
+			}
+			.amplify img{
+				position: absolute;
+				left: 20px;
+				top: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<img class="little" src="img/ldh.webp">
+			<div class="zhe"></div>
+			<div class="amplify">
+			<img class="am_img" src="img/ldh.webp">
+			</div>
+		</div>
+		<script>
+			var nav=document.querySelector('.nav');
+			var zhe=document.querySelector('.zhe');
+			var amplify=document.querySelector('.amplify');
+			var am_img=document.querySelector('.am_img');
+			nav.addEventListener('mouseover',function(){
+				zhe.style.display='block';
+				amplify.style.display='block';
+			})
+			nav.addEventListener('mouseout',function(){
+				zhe.style.display='none';
+				amplify.style.display='none';
+			})
+			// 算鼠标在盒子中的位置
+			nav.addEventListener('mousemove',function(e){
+				
+				var x=e.pageX-nav.offsetLeft-50;
+				var y=e.pageY-nav.offsetTop-50;
+				if(x<=0){
+					zhe.style.left=0+'px';
+				}else if(x>=nav.offsetWidth-zhe.offsetWidth){
+					zhe.style.left=nav.offsetWidth-zhe.offsetWidth+'px';
+				}else{
+					zhe.style.left=x+'px';
+				}
+				if(y<=0){
+					zhe.style.top=0+'px';
+				}else if(y>=nav.offsetHeight-zhe.offsetHeight){
+					
+					zhe.style.top=nav.offsetHeight-zhe.offsetHeight+'px';
+				}else{
+					zhe.style.top=y+'px';
+				}
+				// 大图片移动的距离=(遮挡层移动距离*大图片最大移动距离)/遮挡层最大移动距离
+				var big_maxX=amplify.offsetWidth -am_img.offsetWidth;
+				var big_maxY=amplify.offsetHeight -am_img.offsetHeight;
+				am_img.style.left=(x*big_maxX)/(nav.offsetWidth-zhe.offsetWidth)+'px';
+				am_img.style.top=(y*big_maxY)/(nav.offsetHeight-zhe.offsetHeight)+'px';
+			})
+		</script>
+	</body>
+</html>

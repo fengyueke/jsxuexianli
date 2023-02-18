@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			position: relative;
+			left: -40px;
+			float: left;
+			list-style: none;
+			margin-left: 40px;
+		}
+		li a{
+			text-decoration: none;
+			font-size: 28px;
+		}
+		img{
+			position: absolute;
+			top: 0px;
+			left:0px;
+			width: 100px;
+			height: 60px;
+		}
+		ul{
+			width: 900px;
+			height: 80px;
+			position: absolute;
+			left: 100px;
+		}
+	</style>
+	<body>
+		<ul>
+			<img src="img/jindoyun.png">
+			<li><a href="javascript:;">bore1</a></li>
+			<li><a href="javascript:;">bore2</a></li>
+			<li><a href="javascript:;">bore3</a></li>
+			<li><a href="javascript:;">bore4</a></li>
+			<li><a href="javascript:;">bore5</a></li>
+			<li><a href="javascript:;">bore6</a></li>
+		</ul>
+		<script>
+			var num=0;
+			var ul=document.querySelector('ul');
+			var lis=ul.querySelectorAll('li');
+			var img=ul.querySelector('img');
+			var current=0;
+			for(var i=0;i<lis.length;i++){
+				lis[i].addEventListener('mouseenter',function(){
+					for(var i=0;i<lis.length;i++){
+						lis[i].setAttribute('data-index',i);
+					}
+					var lis_left=this.offsetWidth+40;
+					num=this.getAttribute('data-index');
+					animore(img,lis_left*num);
+				})
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].addEventListener('mouseleave',function(){
+					animore(img,current);
+					
+				})
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].addEventListener('click',function(){
+					current=this.offsetLeft;
+				})
+			}
+			function animore (obj,target,callback) {
+							clearInterval(obj.timer)
+								obj.timer= setInterval(function(){
+									var stop=(target-obj.offsetLeft)/5;
+									stop=stop>0?Math.ceil(stop):Math.floor(stop);
+								obj.style.left=obj.offsetLeft+stop+'px';
+							var _left=obj.offsetLeft;
+								if(_left==target){
+									clearInterval(obj.timer);
+									if(callback){
+										callback();
+									}
+								}
+							},30);
+						}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			background: pink;
+			position: absolute;
+			left: 0;
+		}
+	</style>
+	<body>
+		<button class="btn500">点击到500</button>
+		<button class="btn800">点击到800</button>
+		<div></div>
+		<script src="js/animate.js"></script>
+		<script>
+			var btn500=document.querySelector('.btn500');
+			var btn800=document.querySelector('.btn800');
+			var div=document.querySelector('div');
+			btn500.addEventListener('click',function(){
+				animore(div,500);
+			});
+			btn800.addEventListener('click',function(){
+				animore(div,800,function(){
+					div.style.backgroundColor='red';
+				});
+			})
+		</script>
+	</body>
+</html>

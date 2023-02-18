@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;	
+		}
+		body{
+			height: 1400px;
+		}
+		.hui{
+			position: absolute;
+			top: 240px;
+			right: 50px;
+		}
+		
+		ul{
+			width: 35px;
+		}
+		li{
+			width: 35px;
+			height: 35px;
+			list-style: none;
+			border: 1px solid;
+			font-size: 12px;
+			text-align: center;
+		}
+		li a{
+			text-decoration: none;
+		}
+		.tiao{
+			line-height: 35px;
+		}
+		.bo{
+			line-height: 35px;
+			display: none;
+		}
+		.top{
+			line-height: 35px;
+			display: block;
+		}
+	</style>
+	<body>
+		<div class="box">
+			<ul class="hui">
+				<li><a href="javascript:;">爱逛好货</a></li>
+				<li><a href="javascript:;">淘宝特色</a></li>
+				<li><a href="javascript:;">猜你喜欢</a></li>
+				<li class="bo"><a href="javascript:;">顶部</a></li>
+				<li class="tiao"><a href="javascript:;">反馈</a></li>
+				<li><a href="javascript:;">暴恐举报</a></li>
+			</ul>
+		</div>
+		<script>
+			var ul=document.querySelector('ul');
+			var lis=ul.children;
+			var por=ul.offsetTop;
+			window.addEventListener('scroll',function(){
+				var topsch=window.pageYOffset;
+				var ul_top=ul.offsetTop;
+				if(topsch>=ul_top){
+					ul.style.position='fixed';
+					ul.style.top=0+'px';
+				}
+				if(topsch<=por){
+					ul.style.position='absolute';
+					ul.style.top=por+'px';
+				}
+				if(topsch>=300){
+					lis[3].setAttribute('class','top');
+				}else{
+					lis[3].setAttribute('class','bo');
+				}
+			})
+			lis[3].addEventListener('click',function(){
+				animore(window,0);
+			})
+			function animore (obj,target,callback) {
+							clearInterval(obj.timer)
+								obj.timer= setInterval(function(){
+									var stop=(target-window.pageYOffset)/5;
+									stop=stop>0?Math.ceil(stop):Math.floor(stop);
+								window.scroll(0,window.pageYOffset+stop);
+							var _left=window.pageYOffset;
+								if(_left==target){
+									clearInterval(obj.timer);
+									if(callback){
+										callback();
+									}
+								}
+							},30);
+						}
+		</script>
+	</body>
+</html>

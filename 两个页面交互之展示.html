@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		<span>首页</span>
+		<p>欢迎你</p>
+		<script>
+			var p=document.querySelector('p');
+			// 先去问号
+			// location.search=?username=,,,
+			// 用substr截取字符串 substr('起始位置',截取的长度，若不写截取到最后);
+			console.log(location.search);
+			var parmer=location.search.substr(1);
+			// 截取之后为  username=,,, 再用split分割字符 spilt('以什么分割字符串');
+			var arr=parmer.split('=');
+			var value=decodeURIComponent(arr[1]);
+			console.log(value);
+			p.innerHTML=''+value+'欢迎你';
+		</script>
+	</body>
+</html>

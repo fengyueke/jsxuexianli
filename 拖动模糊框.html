@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.shou {
+			font-size: 25px;
+			width: 200px;
+			margin: 0 auto;
+			cursor: pointer;
+			z-index: -1;
+		}
+
+		.zhe {
+			position: absolute;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: lightgray;
+			opacity: 40%;
+			z-index: 1;
+			display: none;
+		}
+
+		.menu {
+			text-align: center;
+			display: none;
+			width: 360px;
+			height: 180px;
+			background: #fff;
+			z-index: 4;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+		}
+
+		.menu input {
+			width: 200px;
+			outline: none;
+		}
+
+		.menu p:nth-of-type(1) {
+			cursor: all-scroll;
+			font-size: 20px;
+		}
+		
+		.menu p:nth-of-type(2) {
+			position: absolute;
+			top: 40px;
+			left: 25px;
+		}
+
+		.menu p:nth-of-type(3) {
+			position: absolute;
+			top: 80px;
+			left: 10px;
+		}
+		input[type=submit]{
+			width: 160px;
+			height: 40px;
+			margin-top: 90px;
+			text-align: center; 
+			background: 0;
+			border: 1px solid;
+			cursor: pointer;
+		}
+		
+		.menu button{
+			width: 50px;
+			height: 50px;
+			border-radius: 80px;
+			border: 0;
+			background: #fff;
+			position: absolute;
+			left: 330px;
+			top: -20px;
+			cursor: pointer;
+		}
+	</style>
+	<body>
+		<div class="shou">点击，弹出登录框</div>
+		<div class="zhe"></div>
+		<div class="menu">
+			<form>
+				<button>关闭</button>
+				<p class="move">登录会员</p>
+				<p>用户名：<input type="text" name="username" placeholder="请输入用户名" /></p>
+				<p>登录密码：<input type="password" name="pwd" placeholder="请输入登录密码"></p>
+		<p><input type="submit" value="登录会员"></p>
+		</form>
+		</div>
+		<script>
+			var shou=document.querySelector('.shou');
+			var zhe=document.querySelector('.zhe');
+			var menu=document.querySelector('.menu');
+			var move=document.querySelector('.move');
+			shou.addEventListener('click',function(){
+				zhe.style.display='block';
+				menu.style.display='block';
+			})
+			move.addEventListener('mousedown',function(e){
+				console.log(e.pageX);
+				console.log(menu.offsetLeft);
+				var x=e.pageX-(menu.offsetLeft);
+				var y=e.pageY-menu.offsetTop;
+				function move1(e){
+					var x_1=e.pageX-x;
+					var y_1=e.pageY-y;
+					menu.style.left=x_1+'px';
+					menu.style.top=y_1+'px';
+				}
+				move.addEventListener('mousemove',move1)
+				move.addEventListener('mouseup',function(e){
+					move.removeEventListener('mousemove',move1)
+				})
+			})
+		</script>
+	</body>
+</html>

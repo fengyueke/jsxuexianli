@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			margin-top: 150px;
+			margin-left: 100px;
+			background: pink;
+		}
+	</style>
+	<body>
+		<div class="box"></div>
+		<script>
+			var div=document.querySelector(".box");
+			div.addEventListener('click',function(e){
+				var shu_x=e.pageX;
+				var shu_y=e.pageY;
+				console.log(shu_x);
+				console.log(shu_y);
+				var box_x=div.offsetLeft;
+				var box_y=div.offsetTop;
+				console.log(box_x);
+				console.log(box_y);
+				var s_b_x=shu_x-box_x;
+				var s_b_y=shu_y-box_y;
+				console.log(s_b_x);
+				console.log(s_b_y);
+			})
+		</script>
+	</body>
+</html>
